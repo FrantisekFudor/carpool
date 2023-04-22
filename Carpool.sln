@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carpool.DAL", "Carpool.DAL\Carpool.DAL.csproj", "{2794DFDF-5B72-4915-880F-3A72F8B859AC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{693959EE-0FE1-4D1F-A41F-1880F206605A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carpool.DAL.Tests", "Carpool.DAL.Tests\Carpool.DAL.Tests.csproj", "{999A71C4-8C78-47C1-A029-BCB05683AED1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carpool.Common.Tests", "Carpool.Common.Tests\Carpool.Common.Tests.csproj", "{D5EC8532-4ADF-4EB7-9F22-19A9837E6673}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carpool.BL", "Carpool.BL\Carpool.BL\Carpool.BL.csproj", "{E90008FB-B0D4-450F-A2F5-67AEDE4B9824}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carpool.BL.Tests", "Carpool.BL.Tests\Carpool.BL.Tests.csproj", "{65B1BB4B-511B-4C63-8D33-44A2EB578BED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carpool.App", "Carpool.App\Carpool.App.csproj", "{54CD2852-7B15-4B9B-8909-1BBC0BD12104}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2794DFDF-5B72-4915-880F-3A72F8B859AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2794DFDF-5B72-4915-880F-3A72F8B859AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2794DFDF-5B72-4915-880F-3A72F8B859AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2794DFDF-5B72-4915-880F-3A72F8B859AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{999A71C4-8C78-47C1-A029-BCB05683AED1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{999A71C4-8C78-47C1-A029-BCB05683AED1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{999A71C4-8C78-47C1-A029-BCB05683AED1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{999A71C4-8C78-47C1-A029-BCB05683AED1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5EC8532-4ADF-4EB7-9F22-19A9837E6673}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5EC8532-4ADF-4EB7-9F22-19A9837E6673}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5EC8532-4ADF-4EB7-9F22-19A9837E6673}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5EC8532-4ADF-4EB7-9F22-19A9837E6673}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E90008FB-B0D4-450F-A2F5-67AEDE4B9824}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E90008FB-B0D4-450F-A2F5-67AEDE4B9824}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E90008FB-B0D4-450F-A2F5-67AEDE4B9824}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E90008FB-B0D4-450F-A2F5-67AEDE4B9824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65B1BB4B-511B-4C63-8D33-44A2EB578BED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65B1BB4B-511B-4C63-8D33-44A2EB578BED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65B1BB4B-511B-4C63-8D33-44A2EB578BED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65B1BB4B-511B-4C63-8D33-44A2EB578BED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54CD2852-7B15-4B9B-8909-1BBC0BD12104}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54CD2852-7B15-4B9B-8909-1BBC0BD12104}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54CD2852-7B15-4B9B-8909-1BBC0BD12104}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54CD2852-7B15-4B9B-8909-1BBC0BD12104}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{999A71C4-8C78-47C1-A029-BCB05683AED1} = {693959EE-0FE1-4D1F-A41F-1880F206605A}
+		{D5EC8532-4ADF-4EB7-9F22-19A9837E6673} = {693959EE-0FE1-4D1F-A41F-1880F206605A}
+		{65B1BB4B-511B-4C63-8D33-44A2EB578BED} = {693959EE-0FE1-4D1F-A41F-1880F206605A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DC75E9D4-0F0B-4708-BB08-D2DF13754FAA}
+	EndGlobalSection
+EndGlobal
