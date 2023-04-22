@@ -1,0 +1,84 @@
+<Window x:Class="Carpool.App.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Carpool.App.Views"
+        xmlns:app="clr-namespace:Carpool.App"
+        xmlns:converters="clr-namespace:Carpool.App.Converters"
+        xmlns:viewModels="clr-namespace:Carpool.App.ViewModels"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="845" Width="1515" WindowState="Maximized"
+        d:DataContext="{d:DesignInstance viewModels:MainViewModel}"
+        Background="{StaticResource BackgroundColor}">
+    <Grid Name="grid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64"/>
+            <RowDefinition Height="36"/>
+            <RowDefinition Height="800"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="{StaticResource TopLayerBackgroundColor}" Height="64" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="280"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="220"></ColumnDefinition>
+                <ColumnDefinition Width="280"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Visibility="{Binding ButtonsVisible}"
+                    Command="{Binding ChangeToMyRidesCommand}" Content="My rides"
+                    Grid.Column="0" HorizontalAlignment="Left" Margin="150,0,0,0"
+                    Style="{StaticResource DefaultButton}" />
+            <Button Visibility="{Binding ButtonsVisible}"
+                    Command="{Binding ChangeToHomePageCommand}" Content="Home"
+                    Grid.Column="0" HorizontalAlignment="Left" Margin="10,0,0,0"
+                    Style="{StaticResource DefaultButton}" />
+            <TextBlock Text="CarPool" 
+                       Grid.Column="1" HorizontalAlignment="Center" Margin="220,10,0,0" VerticalAlignment="Top" 
+                       TextWrapping="Wrap" FontFamily="Arial Black" Foreground="#FF7F0BC5" FontSize="36" FontWeight="Normal" FontStyle="Normal"/>
+            <TextBlock Grid.Column="2" VerticalAlignment="Center"
+                       FontFamily="Arial Black" Foreground="Black" FontSize="20" > 
+                <Run Text="{Binding SelectedUser.Name}"/>
+                <Run Text="{Binding SelectedUser.Surname}"/>
+            </TextBlock>
+            <Button Visibility="{Binding ButtonsVisible}"
+                    Command="{Binding ChangeToProfileCommand}" Content="Profile" x:Name="ProfilButton" 
+                    Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,150,0" 
+                    Style="{StaticResource DefaultButton}" />
+            <Button Command="{Binding ChangeToLoginCommand}" Content="Logout" x:Name="LogoutButton" 
+                    Grid.Column="3" HorizontalAlignment="Right" Margin="0,0,10,0" 
+                    Style="{StaticResource DefaultButton}" />
+        </Grid>
+        <Grid Grid.Row="1" Background="Black" Margin="0,0,0,0" Height="36" VerticalAlignment="Top"/>
+
+        <Grid Grid.Row="2" VerticalAlignment="Top">
+            <Grid.Resources>
+                <DataTemplate DataType="{x:Type viewModels:LoginViewModel}">
+                    <app:LoginView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:ProfileViewModel}">
+                    <app:ProfileView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:MyRidesViewModel}">
+                    <app:MyRidesView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:HomePageViewModel}">
+                    <app:HomePageView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:EditCarViewModel}">
+                    <app:EditCarView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:AddCarViewModel}">
+                    <app:AddCarView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:JoinRideViewModel}">
+                    <app:JoinRideView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewModels:EditRideViewModel}">
+                    <app:EditRideView/>
+                </DataTemplate>
+            </Grid.Resources>
+            <ContentControl Grid.Row="1" Content="{Binding CurrentViewModel}"></ContentControl>
+        </Grid>
+    </Grid>
+</Window>

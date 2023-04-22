@@ -1,0 +1,123 @@
+﻿<local:UserControlBase x:Class="Carpool.App.EditCarView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Carpool.App.Views"
+        xmlns:viewModels="clr-namespace:Carpool.App.ViewModels"
+        mc:Ignorable="d"
+        Height="500" Width="800"
+        d:DataContext="{d:DesignInstance viewModels:EditCarViewModel}">
+    <Grid Background="#FFFFD596">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#FFFFBB42" Margin="0,0,1,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       VerticalAlignment="Center"
+                       Padding="50, 0, 0,0"
+                       FontSize="40"
+                       Foreground="#FF7F0BC5"
+                       FontWeight="Bold"
+                       Text="EDIT CAR"/>
+        </Grid>
+
+        <Image Grid.Column="0"
+               Height="100" Width="100"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="100,8,0,0"
+               Source="{Binding Car.PhotoUrl}" Grid.Row="1" />
+
+        <Grid Grid.Row="2" Grid.Column="0" Margin="0,0,1,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="2" Grid.Column="0" Width="250" HorizontalAlignment="Right">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" FontSize="20" HorizontalAlignment="Center">
+                    Manufacturer
+                </Label>
+
+                <Label Grid.Row="1" FontSize="20" HorizontalAlignment="Center">
+                    Type
+                </Label>
+
+                <Label Grid.Row="2" FontSize="20" HorizontalAlignment="Center">
+                    Number of seats
+                </Label>
+
+                <Label Grid.Row="3" FontSize="20" HorizontalAlignment="Center">
+                    Registration date
+                </Label>
+
+                <Label Grid.Row="4" FontSize="20" HorizontalAlignment="Center">
+                    Photo url
+                </Label>
+            </Grid>
+
+            <Grid Grid.Column="1" Width="300" HorizontalAlignment="Left">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBox Text="{Binding Car.Manufacturer}" Grid.Row="0"
+                         Height="35" FontSize="20"
+                         TextAlignment="Center" Background="#FF7F0BC5" Foreground="White"/>
+
+                <TextBox Grid.Row="1" Height="35" FontSize="20"
+                         TextAlignment="Center" Foreground="White" Background="#FF7F0BC5"
+                         Text="{Binding Car.Type}"/>
+
+                <TextBox Grid.Row="2" Height="35" FontSize="20"
+                         TextAlignment="Center" Foreground="White" Background="#FF7F0BC5"
+                         Text="{Binding Car.Capacity}"/>
+
+                <TextBox Grid.Row="3" Height="35" FontSize="20"
+                         TextAlignment="Center" Foreground="White" Background="#FF7F0BC5"
+                         Text="{Binding Car.DateOfFirstRegistration}"/>
+
+                <TextBox Grid.Row="4" Height="35" FontSize="20"
+                         TextAlignment="Center" Foreground="White" Background="#FF7F0BC5"
+                         Text="{Binding Car.PhotoUrl}"/>
+
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Content="Save" Background="#FF7F0BC5" 
+                    FontSize="25" Margin="150,10,170,10" Foreground="White" Command="{Binding SaveCommand}" Grid.ColumnSpan="2"/>
+            <Button Grid.Column="1" Content="Back" Background="#FF7F0BC5" 
+                FontSize="25" Margin="170,10,150,10" Foreground="White" Command="{Binding BackCommand}" Grid.ColumnSpan="2"/>
+        </Grid>
+    </Grid>
+</local:UserControlBase>

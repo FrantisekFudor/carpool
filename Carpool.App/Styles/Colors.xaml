@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Brush x:Key="DarkBackgroundColor">#455A64</Brush>
+    
+    <Brush x:Key="BackgroundColor">#607D8B</Brush>
+  
+    <Brush x:Key="TopLayerBackgroundColor">#CFD8DC</Brush>
+
+    <Brush x:Key="AccentColor">#FFC107</Brush>
+
+
+    <Brush x:Key="TextColor">#FFFFFF</Brush>
+    
+    <Brush x:Key="SecondaryTextColor">#212121</Brush>
+
+    <Brush x:Key="DividerColor">#BDBDBD</Brush>
+
+    <Brush x:Key="ErrorColor">#FF2E00</Brush>
+</ResourceDictionary>

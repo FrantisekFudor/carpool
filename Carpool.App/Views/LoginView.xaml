@@ -1,0 +1,51 @@
+﻿<local:UserControlBase x:Class="Carpool.App.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Carpool.App.Views"
+        xmlns:viewModels="clr-namespace:Carpool.App.ViewModels"
+        mc:Ignorable="d"
+        Height="644" Width="1200"
+        d:DataContext="{d:DesignInstance viewModels:LoginViewModel}">
+    <Grid>
+
+        <Grid Grid.Row="1" Background="#FFFFD596">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="1" FontFamily="Arial Black" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Bottom">Choose account</TextBlock>
+
+            <ComboBox ItemsSource="{Binding Users}"
+                      Grid.Row="3"
+                      Width="300"
+                      Background="White"
+                      HorizontalAlignment="Center"
+                      SelectedItem="{Binding SelectedUser}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock FontSize="20">
+                            <Run Text="{Binding Name}" />
+                            <Run Text="{Binding Surname}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+
+            <Button Grid.Row="5"
+                    Content="Login"
+                    Width="300"
+                    Background="#FF7F0BC5"
+                    HorizontalAlignment="Center"
+                    FontSize="30"
+                    Command="{Binding UserSelectedCommand}"/>
+        </Grid>
+    </Grid>
+</local:UserControlBase>

@@ -1,0 +1,171 @@
+﻿<local:UserControlBase x:Class="Carpool.App.MyRidesView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Carpool.App.Views"
+        mc:Ignorable="d"
+        Height="644" Width="1200">
+    <Grid Background="#FFFFD596">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="#FFFFBB42">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       VerticalAlignment="Center"
+                       Padding="50, 0, 0,0"
+                       FontSize="40"
+                       Foreground="#FF7F0BC5"
+                       FontWeight="Bold"
+                       Text="MY RIDES"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   FontSize="40" Foreground="#FF7F0BC5">
+                As a driver
+            </Label>
+            <Label Grid.Column="1"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   FontSize="40" Foreground="#FF7F0BC5">
+                As a passenger
+            </Label>
+
+            <GridSplitter HorizontalAlignment="Right" Height="50" VerticalAlignment="Bottom" Width="5" Background="Black"/>
+            <GridSplitter Grid.Row="1" Margin="0,10,0,54"  Width="5" Background="Black"/>
+
+            <Grid Grid.Row="1" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+            </Grid>
+            <Grid Grid.Row="2" >
+                <ListView
+                    Background="Transparent"
+                ItemsSource="{Binding RidesAsDriver}"
+                Grid.Row="0"
+                    SelectedItem="{Binding SelectedRideD}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Start" DisplayMemberBinding="{Binding Start}"/>
+                            <GridViewColumn Header="Destination" DisplayMemberBinding="{Binding Destination}"/>
+                            <GridViewColumn Header="Departure Time" DisplayMemberBinding="{Binding DepartureTime}"/>
+                            <GridViewColumn Header="Capacity" DisplayMemberBinding="{Binding Car.Capacity}"/>
+                            <GridViewColumn Header="Vehicle" DisplayMemberBinding="{Binding Car.Manufacturer}"/>
+                            <GridViewColumn Header="Model" DisplayMemberBinding="{Binding Car.Type}"/>
+                        </GridView>
+                    </ListView.View>
+
+                </ListView>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="2">
+                <ListView
+                    Background="Transparent"
+                    ItemsSource="{Binding RidesAsPassenger}"
+                    Grid.Row="0"
+                    SelectedItem="{Binding SelectedRideP}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Start" DisplayMemberBinding="{Binding Start}"/>
+                            <GridViewColumn Header="Destination" DisplayMemberBinding="{Binding Destination}"/>
+                            <GridViewColumn Header="Departure Time" DisplayMemberBinding="{Binding DepartureTime}"/>
+                            <GridViewColumn Header="Capacity" DisplayMemberBinding="{Binding Car.Capacity}"/>
+                            <GridViewColumn Header="Vehicle" DisplayMemberBinding="{Binding Car.Manufacturer}"/>
+                            <GridViewColumn Header="Model" DisplayMemberBinding="{Binding Car.Type}"/>
+                        </GridView>
+                    </ListView.View>
+
+                </ListView>
+
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+
+
+
+
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="0">
+                <Button
+                    Command="{Binding DeleteRideCommand}"
+                    Content="Delete ride"
+                    Height="60" Width="200"
+                    Background="Red"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="50,0,0,0"
+                    FontSize="30" Foreground="Black"/>
+                <Button
+                    Command="{Binding EditRideCommand}"
+                    Content="Edit passengers"
+                    Height="60" Width="200"
+                    Background="White"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="350,0,0,0"
+                    FontSize="25" Foreground="Black"/>
+            </Grid>
+
+            <Grid Grid.Row="3" Grid.Column="1">
+                <Button
+                    Command="{Binding LeaveRideCommand}"
+                    Content="Leave ride"
+                    Height="60" Width="200"
+                    Background="Red"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="0,0,0,0"
+                    FontSize="30" Foreground="Black" Grid.Row="1"/>
+            </Grid>
+
+        </Grid>
+
+    </Grid>
+</local:UserControlBase>

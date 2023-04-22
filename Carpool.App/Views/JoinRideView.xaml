@@ -1,0 +1,158 @@
+﻿<local:UserControlBase x:Class="Carpool.App.JoinRideView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Carpool.App.Views"
+        xmlns:viewModels="clr-namespace:Carpool.App.ViewModels"
+        mc:Ignorable="d"
+        Height="657" Width="1030"
+        d:DataContext="{d:DesignInstance viewModels:JoinRideViewModel}">
+    <Grid Background="#FFFFD596" Margin="0,0,0,-91">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="74" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="#FFFFBB42" Margin="0,0,0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       VerticalAlignment="Center"
+                       Padding="50, 0, 0,0"
+                       FontSize="40"
+                       Foreground="#FF7F0BC5"
+                       FontWeight="Bold"
+                       Text="Ride browser"/>
+
+            <Button Command="{Binding BackCommand}"
+                    Grid.Column="2"
+                    Content="Back"
+                    Background="#FF7F0BC5"
+                    FontSize="30"
+                    Margin="20,15,10,10" Foreground="White" />
+            <Button
+                Command="{Binding FilterCommand}"
+                Content="Apply filter"
+                Background="#FF7F0BC5"
+                FontSize="30"
+                Margin="510,158,122,-134" Foreground="White" Grid.ColumnSpan="2" />
+            <Button 
+                Command="{Binding ClearFilterCommand}"
+                Content="Clear filter"
+                Background="#FF7F0BC5"
+                FontSize="30"
+                Margin="29,156,0,-134" Foreground="White" Grid.Column="2" />
+        </Grid>
+
+        <Grid Margin="0,144,0,0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="63"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="137*"/>
+                <ColumnDefinition Width="133"/>
+                <ColumnDefinition Width="166*"/>
+                <ColumnDefinition Width="215*"/>
+                <ColumnDefinition Width="160*"/>
+                <ColumnDefinition Width="145*"/>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition Width="25*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="1"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   FontSize="20" Height="38" Margin="0,10,0,0" Width="63" Content="Driver"/>
+
+            <Label Grid.Row="0" Grid.Column="2"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   FontSize="20" Height="36" Margin="0,11,0,0" Width="61" Content="Start"/>
+
+            <Label Grid.Row="0" Grid.Column="3"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   FontSize="20" Height="37" Margin="0,10,0,0" Width="114" RenderTransformOrigin="0.481,0.581" Content="Destination"/>
+
+            <Label Grid.Row="0" Grid.Column="5"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   FontSize="20" Height="37" Margin="0,11,0,0" Width="72" Content="Vehicle"/>
+
+
+
+            <ListView SelectedItem="{Binding SelectedRideKVP}" Grid.Row="1" Grid.ColumnSpan="6" ItemsSource="{Binding Rides}" x:Name="MyList" Background="#FFFFD596" Grid.Column="1" Height="386" VerticalAlignment="Top">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="885">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="137"/>
+                                <ColumnDefinition Width="133"/>
+                                <ColumnDefinition Width="166"/>
+                                <ColumnDefinition Width="215"/>
+                                <ColumnDefinition Width="160"/>
+                                <ColumnDefinition Width="145*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" HorizontalAlignment="Center"><Run Text="{Binding Key.Driver.Name, Mode=OneWay}" /><Run Text=" "/><Run Text="{Binding Key.Driver.Surname, Mode=OneWay}" /></TextBlock>
+                            <TextBlock Grid.Column="1" Text="{Binding Key.Start, Mode=OneWay}" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Column="2" Text="{Binding Key.Destination, Mode=OneWay}" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Column="3" Text="{Binding Key.DepartureTime, Mode=OneWay}" HorizontalAlignment="Center"/>
+                            <TextBlock Grid.Column="5" HorizontalAlignment="Center"><Run Text="{Binding Value, Mode=OneWay}"/><Run Text="/"/><Run Text="{Binding Key.Car.Capacity, Mode=OneWay}"/></TextBlock>
+                            <TextBlock Grid.Column="4" HorizontalAlignment="Center"><Run Text="{Binding Key.Car.Manufacturer, Mode=OneWay}" /><Run Text=" "/><Run Text="{Binding Key.Car.Type, Mode=OneWay}" /></TextBlock>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Grid.Row="0" Grid.Column="4"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                FontSize="20" Height="37" Margin="0,11,0,0" Width="146" Content="Departure Time"/>
+            <Label Grid.Column="5"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                FontSize="20" Height="37" Margin="160,11,0,0" Width="112" Content="Occupancy" Grid.ColumnSpan="2"/>
+            <Button 
+                Command="{Binding JoinRideCommand}"
+                Content="Join"
+                Background="#FF7F0BC5"
+                FontSize="30"
+                Margin="124,399,10,26" Foreground="White" Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="1" />
+        </Grid>
+        <TextBox IsEnabled="{Binding StartEnabled}"
+                Text="{Binding SearchRideStart}" 
+                Margin="271,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontFamily="Arial" BorderBrush="#FF7F0BC5" Background="#FF7F0BC5" Foreground="White" TextAlignment="Right" HorizontalAlignment="Left" Width="178" Height="30" Grid.Row="1"/>
+        <TextBox IsEnabled="{Binding DestinationEnabled}" 
+                Text="{Binding SearchRideDestination}" 
+                Margin="271,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24" FontFamily="Arial" BorderBrush="#FF7F0BC5" Background="#FF7F0BC5" Foreground="White" TextAlignment="Right" HorizontalAlignment="Left" Width="178" Height="30" Grid.Row="1"/>
+        <DatePicker 
+                IsEnabled="{Binding DateEnabled}"
+                SelectedDate="{Binding SearchRideDepartureTime}"
+                Margin="271,92,0,0" VerticalAlignment="Top" Background="#FF7F0BC5" FontFamily="Arial" FontSize="20" HorizontalAlignment="Left" Width="178" Height="32" Grid.Row="1"/>
+        <TextBlock Margin="51,16,797,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial Black" Foreground="#FF7F0BC5" FontSize="24" FontWeight="Normal" FontStyle="Normal" Height="28" Grid.Row="1"><Run Language="cs-cz" Text="Start"/></TextBlock>
+        <TextBlock Margin="51,54,797,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial Black" Foreground="#FF7F0BC5" FontSize="24" FontWeight="Normal" FontStyle="Normal" Height="28" Grid.Row="1"><Run Language="cs-cz" Text="Destination"/></TextBlock>
+        <TextBlock Margin="51,94,780,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial Black" Foreground="#FF7F0BC5" FontSize="24" FontWeight="Normal" FontStyle="Normal" Height="28" Grid.Row="1"><Run Language="cs-cz" Text="Departure time"/></TextBlock>
+        <CheckBox Command="{Binding StartEnabledCommand}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Name="startBox" HorizontalAlignment="Left" Height="15" Margin="464,14,0,0" Grid.Row="1" VerticalAlignment="Top" Width="16" IsChecked="{Binding StartEnabled}">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2"/>
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        <CheckBox Command="{Binding DestinationEnabledCommand}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Name="destinationBox" HorizontalAlignment="Left" Height="15" Margin="464,53,0,0" Grid.Row="1" VerticalAlignment="Top" Width="16" IsChecked="{Binding DestinationEnabled}">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2"/>
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+        <CheckBox Command="{Binding DateEnabledCommand}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}" Name="dateBox" HorizontalAlignment="Left" Height="15" Margin="464,92,0,0" Grid.Row="1" VerticalAlignment="Top" Width="16" IsChecked="{Binding DateEnabled}">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2"/>
+            </CheckBox.LayoutTransform>
+        </CheckBox>
+    </Grid>
+</local:UserControlBase>

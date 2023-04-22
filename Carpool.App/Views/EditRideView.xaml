@@ -1,0 +1,150 @@
+﻿<local:UserControlBase x:Class="Carpool.App.EditRideView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:Carpool.App.ViewModels"
+        xmlns:local="clr-namespace:Carpool.App.Views"
+        mc:Ignorable="d"
+        Height="450" Width="800"
+        d:DataContext="{d:DesignInstance viewModels:EditRideViewModel}">
+    <Grid Background="#FFFFD596">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="1"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   FontSize="20">
+                Start
+            </Label>
+
+            <Label Grid.Column="2"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   FontSize="20">
+                Destination
+            </Label>
+
+            <Label Grid.Column="3"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   FontSize="20">
+                Time
+            </Label>
+
+            <Label Grid.Column="4"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   FontSize="20">
+                Capacity
+            </Label>
+
+            <Label Grid.Column="5"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Bottom"
+                   FontSize="20">
+                Vehicle
+            </Label>
+
+            <TextBlock Grid.Row="1" Grid.Column="1"
+                     Height="25" Width="120"
+                     VerticalAlignment="Center"
+                     HorizontalAlignment="Center"
+                     TextAlignment="Center"
+                     FontSize="14" Background="#FF7F0BC5" Foreground="White" Text="{Binding Ride.Start}"/>
+                     
+            <TextBlock Grid.Row="1" Grid.Column="2"
+                       Height="25" Width="120"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       TextAlignment="Center"
+                       FontSize="14" Background="#FF7F0BC5" Foreground="White" Text="{Binding Ride.Destination}"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="3"
+                       Height="25" Width="120"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       TextAlignment="Center"
+                       FontSize="14" Background="#FF7F0BC5" Foreground="White" Text="{Binding Ride.DepartureTime}"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="4"
+                       Height="25" Width="120"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       TextAlignment="Center"
+                       FontSize="14" Background="#FF7F0BC5" Foreground="White" Text="{Binding Ride.Car.Capacity}"/>
+
+            <TextBlock
+                       Grid.Row="1" Grid.Column="5"
+                       Height="25" Width="120"
+                       VerticalAlignment="Center"
+                       FontSize="14" 
+                       Background="#FF7F0BC5"
+                       HorizontalAlignment="Center"
+                       TextAlignment="Center"
+                       Foreground="White">
+                <Run Text="{Binding Ride.Car.Manufacturer}" />
+                <Run Text=","/> 
+                <Run Text="{Binding Ride.Car.Type}"  />
+            </TextBlock>
+            <TextBlock Grid.Column="1" Margin="0,0,0,0" VerticalAlignment="Top"><Run Language="cs-cz" Text="{Binding DemoDataLabel}"/></TextBlock>
+
+        </Grid>
+
+        <Label Grid.Row="1"
+               FontSize="30"
+               HorizontalAlignment="Center">
+            Passengers
+        </Label>
+
+        <ListView ItemsSource="{Binding Passengers}"
+                  Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Center"
+                  Height="180" Width="500" Background="#FFFFD596" SelectedItem="{Binding SelectedPassenger}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="500">
+                        <TextBlock Grid.RowSpan="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20">    
+                            <Run Text="{Binding User.Name}" FontWeight="Bold" />
+                            <Run Text="{Binding User.Surname}" FontWeight="Bold" />
+                        </TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Command="{Binding RemovePassengerCommand}" Content="Remove passenger" Grid.Column="0"
+                    HorizontalAlignment="Right" VerticalAlignment="Center"
+                    Height="50" Width="188" Background="Red" FontSize="20" Foreground="Black"/>
+
+            <Button Command="{Binding BackCommand}" Content="Back" Grid.Column="2"
+                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                    Height="50" Width="188" Background="#FF7F0BC5" FontSize="20" Foreground="Black"/>
+        </Grid>
+    </Grid>
+</local:UserControlBase>
